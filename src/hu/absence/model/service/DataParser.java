@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 
 public class DataParser {
 
+    private static final String SEPARATOR = " ";
+    private static final char HASH_SIGN = '#';
+
     public List<Absence> parse(List<String> lines) {
         AbsenceDate absenceDate = null;
         List<Absence> absences = new ArrayList<>();
@@ -24,16 +27,16 @@ public class DataParser {
     }
 
     private boolean isDate(String line) {
-        return line.charAt(0) == '#';
+        return line.charAt(0) == HASH_SIGN;
     }
 
     private AbsenceDate createAbsenceDate(String line) {
-        String[] items = line.split(" ");
+        String[] items = line.split(SEPARATOR);
         return new AbsenceDate(Integer.parseInt(items[1]), Integer.parseInt(items[2]));
     }
 
     private Absence createAbsence(AbsenceDate absenceDate, String line) {
-        String[] items = line.split(" ");
+        String[] items = line.split(SEPARATOR);
         String name = items[0] + " " + items[1];
         return new Absence(absenceDate, name, createAbsenceTypes(items[2]));
     }

@@ -34,5 +34,13 @@ public class App {
         System.out.print("A nap sorszáma = ");
         int day = console.readInt();
         System.out.println("Azon a napon "+ absenceService.getNameOfDay(month, day) + " volt.");
+        System.out.println("6. feladat");
+        System.out.print("A nap neve = ");
+        String nameOfDay = console.read();
+        System.out.print("Az óra sorszáma = ");
+        int lessonId = console.readInt();
+        System.out.println("Ekkor összesen "+ absenceService.countCertainAbsences(nameOfDay, lessonId - 1)
+                + " óra hiányzás történt.");
+        System.out.println("7. feladat: A legtöbbet hiányzó tanulók: " + absenceService.getSlackerStudentNames());
     }
 }
